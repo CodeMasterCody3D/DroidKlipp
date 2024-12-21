@@ -49,3 +49,7 @@ plug usb intoo phone, allow computer when promted.
 # Finished
 
 Now your on your way to loading DroidKlipps between printers!!
+
+
+# NOTE
+make sure to open xsdl on android before you plug usb up because it will create an xserver on the networks availble. if your usb is plugged in with usb tethering enabled and then open Xserver XSDL it will create the xserver for your usb tether IP address.

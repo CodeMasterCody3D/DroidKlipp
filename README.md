@@ -13,3 +13,10 @@ USB tethering-based network bridge for efficient communication
 Full compatibility with Xserver XSDL to display KlipperScreen on Android
 Optimized for makers seeking portable and powerful 3D printing interfaces
 Collaborate and contribute to this innovative project that transforms Android devices into versatile 3D printing tools.
+
+
+# Prerequisites
+
+`sudo apt install adb`
+
+

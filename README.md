@@ -76,6 +76,12 @@ Even after enabling the "Stay Awake" option in the Developer/USB Debugging optio
 This will disable the screen-saver in Xserver and keep KlipperScreen always active.
 
 
+# XseverXSDL
+XserverXSDL is not on the playstore anymore.
+here is the official sourceforge link:
+```sh
+https://sourceforge.net/projects/libsdl-android/files/apk/XServer-XSDL/XServer-XSDL-1.20.51.apk/download
+```
 
 
 

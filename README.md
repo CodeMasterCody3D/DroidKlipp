@@ -17,11 +17,13 @@ Collaborate and contribute to this innovative project that transforms Android de
 
 # Prerequisites
 
-`sudo apt install adb`
-`sudo apt install tmux`
+```sudo apt install adb```
+```sudo apt install tmux```
 
 
 # Install DroidKlipp
 
-`./droidklipp.sh`
+```cd ~ && git clone https://github.com/CodeMasterCody3D/DroidKlipp.git```
+
+```./droidklipp.sh```
 

@@ -3,6 +3,17 @@
 # DroidKlipp
 "A tool for using Android devices with KlipperScreen via USB tethering and ADB."   Use xserver XSDL on android to connect with DroidKlipp  
 
+# You need to use KIAUH to install klipperScreen for this to work.
+
+Download
+```sh
+cd ~ && git clone https://github.com/dw-0/kiauh.git
+```
+Run script
+```sh
+./kiauh/kiauh.sh
+```
+Install klipper screen following the prompts
 
 DroidKlipp
 A unique solution for integrating Android devices into 3D printing workflows. DroidKlipp leverages ADB to create a network bridge via USB tethering on Android, enabling seamless access to KlipperScreen through Xserver XSDL.
@@ -53,3 +64,5 @@ Now your on your way to loading DroidKlipps between printers!!
 
 # NOTE
 make sure to open xsdl on android before you plug usb up because it will create an xserver on the networks availble. if your usb is plugged in with usb tethering enabled and then open Xserver XSDL it will create the xserver for your usb tether IP address.
+
+

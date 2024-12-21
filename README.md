@@ -66,4 +66,17 @@ Now your on your way to loading DroidKlipps between printers!!
 # NOTE:
 make sure to open xsdl on android before you plug usb up because it will create an xserver on the networks availble. if your usb is plugged in with usb tethering enabled and then open Xserver XSDL it will create the xserver for your usb tether IP address.
 
+# USB Debugging
+Even after enabling the "Stay Awake" option in the Developer/USB Debugging options of your Android device, the Xserver-XSDL may still go to a black screen but keep the backlight of your device on. To keep the screen always active, upon start up of Xserver-XSDL app, select the Change Device Configuration at the top of the splash screen and then select the Command line parameters, one argument per line option. Append the following argument (must be on seperate lines):
+
+```sh
+-s
+0
+```
+This will disable the screen-saver in Xserver and keep KlipperScreen always active.
+
+
+
+
+
 

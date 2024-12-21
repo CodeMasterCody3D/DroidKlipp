@@ -18,7 +18,7 @@ Install klipper screen following the prompts
 # DroidKlipp
 # A unique solution for integrating Android devices into 3D printing workflows. DroidKlipp leverages ADB to create a network bridge via USB tethering on Android, enabling seamless access to KlipperScreen through Xserver XSDL.
 
-Features:
+# Features:
 
 USB tethering-based network bridge for efficient communication
 Full compatibility with Xserver XSDL to display KlipperScreen on Android

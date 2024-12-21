@@ -84,5 +84,10 @@ https://sourceforge.net/projects/libsdl-android/files/apk/XServer-XSDL/XServer-X
 ```
 
 
+Links
+
+```sh
+https://klipperscreen.readthedocs.io/en/latest/Android/
+```
 
 

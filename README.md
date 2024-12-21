@@ -36,3 +36,7 @@ cd ~ && git clone https://github.com/CodeMasterCody3D/DroidKlipp.git
 ./droidklipp.sh
 ```
 
+```sh
+sudo reboot
+```
+

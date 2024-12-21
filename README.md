@@ -85,10 +85,9 @@ https://sourceforge.net/projects/libsdl-android/files/apk/XServer-XSDL/XServer-X
 
 
 # Links
-[KlipperScreen Docs About ADB USB and XserverXSDL](https://klipperscreen.readthedocs.io/en/latest/Android/) 
-KIAUH
-```sh
-https://github.com/dw-0/kiauh
-```
 
+DOCS:[KlipperScreen Docs About ADB USB and XserverXSDL](https://klipperscreen.readthedocs.io/en/latest/Android/) 
+
+
+Link for:[KIAUH](https://github.com/dw-0/kiauh) 
 

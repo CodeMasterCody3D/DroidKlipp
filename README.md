@@ -40,3 +40,12 @@ cd ~ && git clone https://github.com/CodeMasterCody3D/DroidKlipp.git
 sudo reboot
 ```
 
+# Android side
+
+enable usb debugging
+choose defualt usb configuration as "USB Tethering" 
+plug usb intoo phone, allow computer when promted.
+
+# Finished
+
+Now your on your way to loading DroidKlipps between printers!!

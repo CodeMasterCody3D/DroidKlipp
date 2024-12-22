@@ -45,7 +45,7 @@ cd ~ && git clone https://github.com/CodeMasterCody3D/DroidKlipp.git
 ```
 
 ```sh
-./droidklipp.sh
+./DroidKlipp/droidklipp.sh
 ```
 
 ```sh

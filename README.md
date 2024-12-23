@@ -26,7 +26,7 @@ Open the Xserver XSDL app on your Android device while it’s plugged into your 
 
 
 
-       Once everything is set, you're ready to go!
+Once everything is set, you're ready to go!
 
 Fire Up Your DroidKlipps and Start Printing!
 

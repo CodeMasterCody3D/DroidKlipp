@@ -3,6 +3,7 @@
 
 Load Your DroidKlipp with Ease!
 With DroidKlipp, you can effortlessly connect your Android device to any Klipper setup. Just plug your phone into your Klipper PC or Raspberry Pi, but first, follow these steps to prepare your "ammo":
+Switch your DroidKlipp between klippers with ease!! Plug and Play
 
 1.  Install the Required App
 Download and install Xserver XSDL on your Android device.

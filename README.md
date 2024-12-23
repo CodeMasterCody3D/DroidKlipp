@@ -51,7 +51,9 @@ To use DroidKlipp, you need to install KlipperScreen via [KIAUH](https://github.
    ./kiauh/kiauh.sh
    ```  
 
-3. Follow the prompts to install KlipperScreen.  
+3. Follow the prompts to install KlipperScreen.
+
+4. Please note that installing the network add-on during the KlipperScreen setup will prevent you from connecting to Wi-Fi afterward.
 
 ---
 

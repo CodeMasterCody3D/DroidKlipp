@@ -45,6 +45,14 @@ cd ~ && git clone https://github.com/CodeMasterCody3D/DroidKlipp.git
 ```
 
 ```sh
+cd DroidKlipp
+```
+
+```sh
+sudo chmod +x DroidKlipp
+```
+
+```sh
 ./DroidKlipp/droidklipp.sh
 ```
 

@@ -20,7 +20,8 @@ def check_adb_devices():
     """Check for connected ADB devices."""
     try:
         result = subprocess.run(['adb', 'devices'], capture_output=True, text=True)
-        devices = [line.split()[0] for line in result.stdout.splitlines() if "\\tdevice" in line]
+        # Filter for lines that contain '\tdevice', indicating a connected device
+        devices = [line.split()[0] for line in result.stdout.splitlines() if '\tdevice' in line]
         return devices
     except Exception as e:
         print(f"Error checking ADB devices: {e}")
@@ -29,44 +30,25 @@ def check_adb_devices():
 def run_script():
     """Run the start_klipperscreen.sh script."""
     try:
-        # Get the HOME directory dynamically
-        home_dir = os.environ.get("HOME")
-        if home_dir is None:
-            home_dir = os.path.expanduser("~")
-        
-        # Run the script using the HOME environment variable
-        subprocess.run([f'{home_dir}/start_klipperscreen.sh'], check=True)
+        home_dir = os.environ.get("HOME", os.path.expanduser("~"))
+        subprocess.run([f"{home_dir}/start_klipperscreen.sh"], check=True)
+        print("start_klipperscreen.sh executed successfully.")
     except Exception as e:
         print(f"Error running start_klipperscreen.sh: {e}")
 
 def main():
-    connected_devices = set()
-
     while True:
-        # Check for connected devices
-        current_devices = set(check_adb_devices())
-        
-        # Detect new devices
-        new_devices = current_devices - connected_devices
-        
-        if new_devices:
-            print(f"New devices detected: {new_devices}")
-            for device in new_devices:
-                try:
-                    print(f"Device {device} detected, rerunning start_klipperscreen.sh")
-                    # Run the script to restart KlipperScreen
-                    run_script()
-                except Exception as e:
-                    print(f"Error setting up device {device}: {e}")
-        
-        # Update the list of connected devices
-        connected_devices = current_devices
-        
-        # Wait for a while before checking again
+        devices = check_adb_devices()
+        if devices:
+            print(f"ADB devices detected: {devices}")
+            run_script()
+        else:
+            print("No ADB devices detected.")
         time.sleep(5)
 
 if __name__ == "__main__":
     main()
+
 EOF
 
 # Step 2: Create the shell script (start_klipperscreen.sh)
@@ -74,44 +56,17 @@ echo "Creating the shell script: start_klipperscreen.sh"
 cat <<EOF | sudo -u $USER_NAME tee /home/$USER_NAME/start_klipperscreen.sh > /dev/null
 #!/bin/bash
 
-# Check if adb is installed
-if ! command -v adb &> /dev/null; then
-    echo "ADB not found, exiting..."
-    exit 1
-fi
+# Forward the ADB port
+adb forward tcp:6100 tcp:6000
 
-# Check for ADB USB connection (if there's an IP address attached to adb)
-adb_devices=\$(adb devices | grep -w "device")
-if [[ -z "\$adb_devices" ]]; then
-    echo "No ADB USB device detected, exiting..."
-    exit 0
-fi
+# Start KlipperScreen in a new tmux session
+tmux new-session -d -s klipperscreen "
+    export DISPLAY=:100 && \
+    source \"$HOME/.KlipperScreen-env/bin/activate\" && \
+    python3 \"$HOME/KlipperScreen/screen.py\""
 
-# Get the IP address of the connected Android device
-device_ip=\$(adb shell ip -o -4 addr show | grep 'rndis0' | awk '{print \$4}' | cut -d'/' -f1)
-
-if [[ -z "\$device_ip" ]]; then
-    echo "No IP address found for the device, exiting..."
-    exit 0
-fi
-
-# Debug: Print the device IP to ensure it was extracted correctly
-echo "Device IP: \$device_ip"
-
-# Export the DISPLAY environment variable using the device's IP
-export DISPLAY="\${device_ip}:0"
-
-# Close the existing tmux session if it exists
-if tmux has-session -t klipperscreen 2>/dev/null; then
-    echo "Existing tmux session found. Killing it..."
-    tmux kill-session -t klipperscreen
-fi
-
-# Start a new tmux session and run KlipperScreen
-echo "Starting a new tmux session for KlipperScreen..."
-tmux new-session -d -s klipperscreen "source '\$HOME/.KlipperScreen-env/bin/activate' && python3 '\$HOME/KlipperScreen/screen.py'"
-
-echo "KlipperScreen started on \$device_ip."
+# Print a message indicating success
+echo "DroidKlipp has started"
 EOF
 
 # Make both scripts executable

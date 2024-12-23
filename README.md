@@ -1,5 +1,5 @@
 
-![Logo](https://github.com/CodeMasterCody3D/DroidKlipp/blob/main/droidklipplogo.png](https://github.com/CodeMasterCody3D/DroidKlipp/blob/main/logo.png)
+![Logo](https://github.com/CodeMasterCody3D/DroidKlipp/blob/main/logo.png)
 
 # DroidKlipp: Seamlessly Connect Android to Klipper
 

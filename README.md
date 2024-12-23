@@ -1,4 +1,3 @@
-
 ![Logo](https://github.com/CodeMasterCody3D/DroidKlipp/blob/main/logo.png)
 
 # DroidKlipp: Seamlessly Connect Android to Klipper
@@ -15,6 +14,14 @@ DroidKlipp allows you to integrate your Android device with any Klipper setup, e
 ---
 
 ## Getting Started
+
+### Prerequisites
+
+Before proceeding, ensure the following packages are installed on your Klipper machine:  
+```sh
+sudo apt install adb
+sudo apt install tmux
+```  
 
 ### Android Setup
 1. **Install Required App**  
@@ -113,15 +120,6 @@ Xserver XSDL is no longer available on the Google Play Store. Download it direct
 
 ---
 
-## Prerequisites
-
-Install the following packages on your Klipper machine:
-```sh
-sudo apt install adb tmux
-```  
-
----
-
 ## Links and Resources
 
 - [KlipperScreen Docs](https://klipperscreen.readthedocs.io/en/latest/Android/)  
@@ -132,5 +130,3 @@ sudo apt install adb tmux
 ---
 
 Now you’re ready to load your DroidKlipps and start printing! 🚀
-
-

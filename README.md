@@ -49,7 +49,7 @@ cd DroidKlipp
 ```
 
 ```sh
-sudo chmod +x DroidKlipp
+sudo chmod +x droidklipp.sh
 ```
 
 ```sh

@@ -1,131 +1,135 @@
+
 ![Logo](https://github.com/CodeMasterCody3D/DroidKlipp/blob/main/droidklipplogo.png)
-# Overview
 
-Load Your DroidKlipp with Ease!
-With DroidKlipp, you can effortlessly connect your Android device to any Klipper setup. Just plug your phone into your Klipper PC or Raspberry Pi, but first, follow these steps to prepare your "ammo":
-Switch your DroidKlipp between klippers with ease!! Plug and Play
+# DroidKlipp: Seamlessly Connect Android to Klipper
 
-1.  Install the Required App
-Download and install Xserver XSDL on your Android device.
+**DroidKlipp** transforms your Android device into a powerful interface for KlipperScreen, allowing easy connection via **ADB** and **Xserver XSDL**. Switch between printers effortlessly with this portable and versatile solution!
 
+---
 
+## Overview
 
-3.  Enable USB Debugging
-Make sure USB Debugging is enabled on your phone. You can find this option in the Developer Settings.
+### What is DroidKlipp?  
+DroidKlipp allows you to integrate your Android device with any Klipper setup, enabling seamless interaction with KlipperScreen. By leveraging ADB's TCP forwarding, you can bridge your device and enjoy a fully functional 3D printing interface on the go.
 
+---
 
+## Getting Started
 
-5.  Set USB Tethering as Default
-Configure your phone to use USB Tethering as the default USB connection mode.
+### Android Setup
+1. **Install Required App**  
+   Download and install [Xserver XSDL](https://sourceforge.net/projects/libsdl-android/files/apk/XServer-XSDL/XServer-XSDL-1.20.51.apk/download) on your Android device.  
 
+2. **Enable USB Debugging**  
+   - Go to your phone's Developer Options and enable **USB Debugging**.  
 
+3. **ADB TCP Forwarding**  
+   - Use ADB to forward the required ports between your Android device and the Klipper machine.  
 
-7.  Launch Xserver XSDL First
-Open the Xserver XSDL app on your Android device while it’s plugged into your Klipper PC/Pi.
+4. **Launch Xserver XSDL**  
+   - Open Xserver XSDL **before** plugging in your Android device to ensure the Xserver port is created correctly.
 
-⚠️ This step ensures the Xserver port is created on the USB tethered IP. If skipped, the connection won't work.
+---
 
+### Installing KlipperScreen with KIAUH
+To use DroidKlipp, you need to install KlipperScreen via [KIAUH](https://github.com/dw-0/kiauh).  
 
+1. Clone the KIAUH repository:  
+   ```sh
+   cd ~ && git clone https://github.com/dw-0/kiauh.git
+   ```  
 
-Once everything is set, you're ready to go!
+2. Run the KIAUH script:  
+   ```sh
+   ./kiauh/kiauh.sh
+   ```  
 
-Fire Up Your DroidKlipps and Start Printing!
+3. Follow the prompts to install KlipperScreen.  
 
-# DroidKlipp
-# "A tool for using Android devices with KlipperScreen via USB tethering and ADB."   Use xserver XSDL on android to connect with DroidKlipp  
-# DroidKlipp
-# A unique solution for integrating Android devices into 3D printing workflows. DroidKlipp leverages ADB to create a network bridge via USB tethering on Android, enabling seamless access to KlipperScreen through Xserver XSDL.
+---
 
-# You need to use KIAUH to install klipperScreen for this to work.
+### Installing DroidKlipp
 
-Download
+1. Clone the DroidKlipp repository:  
+   ```sh
+   cd ~ && git clone https://github.com/CodeMasterCody3D/DroidKlipp.git
+   ```  
+
+2. Navigate to the DroidKlipp folder:  
+   ```sh
+   cd DroidKlipp
+   ```  
+
+3. Make the script executable:  
+   ```sh
+   sudo chmod +x droidklipp.sh
+   ```  
+
+4. Run the DroidKlipp setup script:  
+   ```sh
+   ./droidklipp.sh
+   ```  
+
+5. Reboot your system:  
+   ```sh
+   sudo reboot
+   ```  
+
+---
+
+## Android Configuration
+
+1. **Enable USB Debugging**  
+   - Ensure your phone is set to allow debugging.  
+
+2. **ADB TCP Forwarding**  
+   - Use `adb forward` to connect the Klipper machine to your Android device.  
+
+3. **Plug & Play**  
+   - Plug in your phone and allow any permission prompts that appear.  
+
+---
+
+## Important Notes
+
+### Xserver XSDL Configuration
+- Ensure Xserver XSDL is open before connecting your Android device.  
+- If using command-line parameters, disable the screen saver by adding the following:  
+  ```sh
+  -s
+  0
+  ```  
+
+### Xserver XSDL Download
+Xserver XSDL is no longer available on the Google Play Store. Download it directly from SourceForge:  
+[Download Xserver XSDL](https://sourceforge.net/projects/libsdl-android/files/apk/XServer-XSDL/XServer-XSDL-1.20.51.apk/download)
+
+---
+
+## Features
+- **ADB TCP Forwarding:** Effortlessly bridge your Android device to Klipper.  
+- **Seamless KlipperScreen Integration:** Display KlipperScreen on your Android device via Xserver XSDL.  
+- **Portable & Flexible:** Perfect for makers seeking a mobile 3D printing interface.  
+
+---
+
+## Prerequisites
+
+Install the following packages on your Klipper machine:
 ```sh
-cd ~ && git clone https://github.com/dw-0/kiauh.git
-```
-Run script
-```sh
-./kiauh/kiauh.sh
-```
-Install klipper screen following the prompts
+sudo apt install adb tmux
+```  
 
+---
 
-# Features:
+## Links and Resources
 
-USB tethering-based network bridge for efficient communication
-Full compatibility with Xserver XSDL to display KlipperScreen on Android
-Optimized for makers seeking portable and powerful 3D printing interfaces
-Collaborate and contribute to this innovative project that transforms Android devices into versatile 3D printing tools.
+- [KlipperScreen Docs](https://klipperscreen.readthedocs.io/en/latest/Android/)  
+- [KIAUH](https://github.com/dw-0/kiauh)  
+- [Xserver XSDL APK](https://sourceforge.net/projects/libsdl-android/files/apk/XServer-XSDL/XServer-XSDL-1.20.51.apk/download)  
 
+---
 
-# Prerequisites:
+Now you’re ready to load your DroidKlipps and start printing! 🚀
 
-```sh
-sudo apt install adb
-```
-
-```sh
-sudo apt install tmux
-```
-
-
-# Install DroidKlipp:
-
-```sh
-cd ~ && git clone https://github.com/CodeMasterCody3D/DroidKlipp.git
-```
-
-```sh
-cd DroidKlipp
-```
-
-```sh
-sudo chmod +x droidklipp.sh
-```
-
-```sh
-./droidklipp.sh
-```
-
-```sh
-sudo reboot
-```
-
-# Android side:
-
-enable usb debugging
-choose defualt usb configuration as "USB Tethering" 
-plug usb intoo phone, allow computer when promted.
-
-# Finished:
-
-Now your on your way to loading DroidKlipps between printers!!
-
-
-# NOTE:
-make sure to open xsdl on android before you plug usb up because it will create an xserver on the networks availble. if your usb is plugged in with usb tethering enabled and then open Xserver XSDL it will create the xserver for your usb tether IP address.
-
-# USB Debugging
-Even after enabling the "Stay Awake" option in the Developer/USB Debugging options of your Android device, the Xserver-XSDL may still go to a black screen but keep the backlight of your device on. To keep the screen always active, upon start up of Xserver-XSDL app, select the Change Device Configuration at the top of the splash screen and then select the Command line parameters, one argument per line option. Append the following argument (must be on seperate lines):
-
-```sh
--s
-0
-```
-This will disable the screen-saver in Xserver and keep KlipperScreen always active.
-
-
-# XseverXSDL
-XserverXSDL is not on the playstore anymore.
-here is the official sourceforge link:
-```sh
-https://sourceforge.net/projects/libsdl-android/files/apk/XServer-XSDL/XServer-XSDL-1.20.51.apk/download
-```
-
-
-# Links
-
-DOCS:[KlipperScreen Docs About ADB USB and XserverXSDL](https://klipperscreen.readthedocs.io/en/latest/Android/) 
-
-
-Link for:[KIAUH](https://github.com/dw-0/kiauh) 
 

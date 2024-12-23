@@ -126,7 +126,8 @@ sudo apt install adb tmux
 
 - [KlipperScreen Docs](https://klipperscreen.readthedocs.io/en/latest/Android/)  
 - [KIAUH](https://github.com/dw-0/kiauh)  
-- [Xserver XSDL APK](https://sourceforge.net/projects/libsdl-android/files/apk/XServer-XSDL/XServer-XSDL-1.20.51.apk/download)  
+- [Xserver XSDL APK](https://sourceforge.net/projects/libsdl-android/files/apk/XServer-XSDL/XServer-XSDL-1.20.51.apk/download)
+- [Android Klipper Screen](https://github.com/naruhaxor/AndroidKlipperScreen)  
 
 ---
 

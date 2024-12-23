@@ -1,5 +1,26 @@
 ![Logo](https://github.com/CodeMasterCody3D/DroidKlipp/blob/main/droidklipplogo.png)
+# Overview
 
+Load Your DroidKlipp with Ease!
+With DroidKlipp, you can effortlessly connect your Android device to any Klipper setup. Just plug your phone into your Klipper PC or Raspberry Pi, but first, follow these steps to prepare your "ammo":
+
+Install the Required App
+Download and install Xserver XSDL on your Android device.
+
+Enable USB Debugging
+Make sure USB Debugging is enabled on your phone. You can find this option in the Developer Settings.
+
+Set USB Tethering as Default
+Configure your phone to use USB Tethering as the default USB connection mode.
+
+Launch Xserver XSDL First
+Open the Xserver XSDL app on your Android device while it’s plugged into your Klipper PC/Pi.
+
+⚠️ This step ensures the Xserver port is created on the USB tethered IP. If skipped, the connection won't work.
+
+Once everything is set, you're ready to go!
+
+Fire Up Your DroidKlipps and Start Printing!
 
 # DroidKlipp
 # "A tool for using Android devices with KlipperScreen via USB tethering and ADB."   Use xserver XSDL on android to connect with DroidKlipp  

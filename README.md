@@ -53,7 +53,7 @@ sudo chmod +x droidklipp.sh
 ```
 
 ```sh
-./DroidKlipp/droidklipp.sh
+./droidklipp.sh
 ```
 
 ```sh

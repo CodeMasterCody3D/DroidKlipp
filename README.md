@@ -28,12 +28,9 @@ sudo apt install tmux
    Download and install [Xserver XSDL](https://sourceforge.net/projects/libsdl-android/files/apk/XServer-XSDL/XServer-XSDL-1.20.51.apk/download) on your Android device.  
 
 2. **Enable USB Debugging**  
-   - Go to your phone's Developer Options and enable **USB Debugging**.  
+   - Go to your phone's Developer Options and enable **USB Debugging**. 
 
-3. **ADB TCP Forwarding**  
-   - Use ADB to forward the required ports between your Android device and the Klipper machine.  
-
-4. **Launch Xserver XSDL**  
+3. **Launch Xserver XSDL**  
    - Open Xserver XSDL **before** plugging in your Android device to ensure the Xserver port is created correctly.
 
 ---

@@ -13,6 +13,13 @@ DroidKlipp allows you to integrate your Android device with any Klipper setup, e
 
 ---
 
+## Features
+- **Automatic ADB TCP Forwarding:** Effortlessly bridge your Android device to Klipper.  
+- **Seamless KlipperScreen Integration:** Display KlipperScreen on your Android device via Xserver XSDL.  
+- **Portable & Flexible:** Perfect for makers seeking a mobile 3D printing interface.  
+
+---
+
 ## Getting Started
 
 ### Prerequisites
@@ -88,10 +95,8 @@ To use DroidKlipp, you need to install KlipperScreen via [KIAUH](https://github.
 1. **Enable USB Debugging**  
    - Ensure your phone is set to allow debugging.  
 
-2. **ADB TCP Forwarding**  
-   - Use `adb forward` to connect the Klipper machine to your Android device.  
 
-3. **Plug & Play**  
+2. **Plug & Play**  
    - Plug in your phone and allow any permission prompts that appear.  
 
 ---
@@ -111,13 +116,6 @@ Even after enabling the "Stay Awake" option in the Developer/USB Debugging optio
 ### Xserver XSDL Download
 Xserver XSDL is no longer available on the Google Play Store. Download it directly from SourceForge:  
 [Download Xserver XSDL](https://sourceforge.net/projects/libsdl-android/files/apk/XServer-XSDL/XServer-XSDL-1.20.51.apk/download)
-
----
-
-## Features
-- **ADB TCP Forwarding:** Effortlessly bridge your Android device to Klipper.  
-- **Seamless KlipperScreen Integration:** Display KlipperScreen on your Android device via Xserver XSDL.  
-- **Portable & Flexible:** Perfect for makers seeking a mobile 3D printing interface.  
 
 ---
 

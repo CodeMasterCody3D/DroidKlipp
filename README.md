@@ -24,7 +24,7 @@ DroidKlipp allows you to integrate your Android device with any Klipper setup, e
 
 ### Prerequisites
 
-Before proceeding, ensure the following packages are installed on your Klipper machine:  
+Ensure the following packages are installed on your Klipper machine:  
 ```sh
 sudo apt install adb
 sudo apt install tmux
@@ -43,19 +43,24 @@ sudo apt install tmux
 ---
 
 ### Installing KlipperScreen with KIAUH
-To use DroidKlipp, you need to install KlipperScreen via [KIAUH](https://github.com/dw-0/kiauh).  
+To use DroidKlipp, you need to install KlipperScreen via KIAUH. 
+UPDATE: I forked the KIAUH repo and added DroidKlipp to the install menu.
+[kiauhPlusDroidKlipp
+](https://github.com/CodeMasterCody3D/kiauhPlusDroidKlipp.git).  
+
+Alternative install would be using my fork of KIAUH.
 
 1. Clone the KIAUH repository:  
    ```sh
-   cd ~ && git clone https://github.com/dw-0/kiauh.git
+   cd ~ && git clone https://github.com/CodeMasterCody3D/kiauhPlusDroidKlipp.git
    ```  
 
 2. Run the KIAUH script:  
    ```sh
-   ./kiauh/kiauh.sh
+   ./kiauhPlusDroidKlipp/kiauh.sh
    ```  
 
-3. Follow the prompts to install KlipperScreen.
+3. Follow the prompts to install KlipperScreen.(Alternative Install: DroidKlipp install added to KIAUH for easy install)
 
 4. Please note that installing the network add-on during the KlipperScreen setup will prevent you from connecting to Wi-Fi afterward.
 
@@ -81,9 +86,15 @@ To use DroidKlipp, you need to install KlipperScreen via [KIAUH](https://github.
 4. Run the DroidKlipp setup script:  
    ```sh
    ./droidklipp.sh
-   ```  
+   ```
+    
+5. Install Prerequisites:  
+  ```sh
+  sudo apt install adb
+  sudo apt install tmux
+  ``` 
 
-5. Reboot your system:  
+6. Reboot your system:  
    ```sh
    sudo reboot
    ```  

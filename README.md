@@ -1,5 +1,16 @@
 ## DROIDKLIPP USES THE INSTALL LOCATION OF KLIPPER SCREEN INSTALLED VIA KIAUH V6. WHEN RUNNING KIAUH IT WILL ASK TO USE VERSION V6 PRESS Y FOR YES. THEN PROCEED TO INSTALL KLIPPERCREEN WITH KIAUH, OTHERWISE YOU WILL NOT HAVE KLIPPERSCREEN WORKING ON YOUR ANDROID.
 
+##🌐 DroidKlipp WiFi Add-on (New!)
+DroidKlipp now supports Automatic WiFi Fallback. If your USB cable is unplugged or the connection is lost, DroidKlipp will automatically detect the absence of a physical device and reroute the KlipperScreen display to your Android device over your local network using X11 redirection.
+Features
+Polling Watchdog: Checks for devices every 3 seconds.
+Seamless Handover: Automatically kills the WiFi session when a USB device is reconnected to save resources.
+Low Latency: Uses XServer XSDL redirection for a native-feeling experience.
+Installation
+Ensure XServer XSDL is running on your Android device.
+Run the install_wifi.sh script.
+Enter your Android device's IP address when prompted
+
 
 ![Logo](https://github.com/CodeMasterCody3D/DroidKlipp/blob/main/logo.png)
 

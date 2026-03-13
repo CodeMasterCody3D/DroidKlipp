@@ -104,6 +104,28 @@ Alternative install would be using my fork of KIAUH.
 
 ---
 
+### Installing wifi addon 
+
+1. Navigate to the DroidKlipp folder:  
+   ```sh
+   cd ~
+   ```
+   ```sh
+   cd DroidKlipp
+   ```  
+
+2. Make the script executable:  
+   ```sh
+   sudo chmod +x install_wifi.sh
+   ```  
+
+3. Run the DroidKlipp wifi setup script:  
+   ```sh
+   ./install_wifi.sh
+   ```
+
+---
+
 ## Android Configuration
 
 1. **Enable USB Debugging**  

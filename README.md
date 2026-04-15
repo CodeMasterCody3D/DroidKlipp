@@ -11,6 +11,7 @@ Ensure XServer XSDL is running on your Android device.
 Run the install_wifi.sh script.
 Enter your Android device's IP address when prompted
 
+NEW!! Auto unlock screen and open xserver xsdl. needs lock screen set to none on the Android device.
 
 ![Logo](https://github.com/CodeMasterCody3D/DroidKlipp/blob/main/logo.png)
 

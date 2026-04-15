@@ -1,6 +1,9 @@
 ## DROIDKLIPP USES THE INSTALL LOCATION OF KLIPPER SCREEN INSTALLED VIA KIAUH V6. WHEN RUNNING KIAUH IT WILL ASK TO USE VERSION V6 PRESS Y FOR YES. THEN PROCEED TO INSTALL KLIPPERCREEN WITH KIAUH, OTHERWISE YOU WILL NOT HAVE KLIPPERSCREEN WORKING ON YOUR ANDROID.
 
-🌐 DroidKlipp WiFi Add-on (New!)
+NEW: DroidKlipp now supports automatic device wake and startup of XServer XSDL when an ADB device is detected.
+Note: Android screen lock must be disabled (set to None) for this feature to work correctly.
+
+🌐 DroidKlipp WiFi Add-on
 DroidKlipp now supports Automatic WiFi Fallback. If your USB cable is unplugged or the connection is lost, DroidKlipp will automatically detect the absence of a physical device and reroute the KlipperScreen display to your Android device over your local network using X11 redirection.
 Features
 Polling Watchdog: Checks for devices every 3 seconds.
@@ -11,7 +14,6 @@ Ensure XServer XSDL is running on your Android device.
 Run the install_wifi.sh script.
 Enter your Android device's IP address when prompted
 
-NEW!! Auto unlock screen and open xserver xsdl. needs lock screen set to none on the Android device.
 
 ![Logo](https://github.com/CodeMasterCody3D/DroidKlipp/blob/main/logo.png)
 

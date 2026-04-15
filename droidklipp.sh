@@ -59,6 +59,16 @@ cat <<EOF | sudo -u $USER_NAME tee /home/$USER_NAME/start_klipperscreen.sh > /de
 # Forward the ADB port
 adb forward tcp:6100 tcp:6000
 
+# Wake + unlock
+adb shell input keyevent KEYCODE_WAKEUP
+sleep 1
+
+# Launch XSDL
+adb shell am start -n x.org.server/.MainActivity
+
+# Give XSDL time to start
+sleep 5
+
 # Start KlipperScreen in a new tmux session
 tmux new-session -d -s klipperscreen "
     export DISPLAY=:100 && \

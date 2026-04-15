@@ -16,19 +16,18 @@ import os
 import subprocess
 import time
 
+last_state = False  # track previous connection state
+
 def check_adb_devices():
-    """Check for connected ADB devices."""
     try:
         result = subprocess.run(['adb', 'devices'], capture_output=True, text=True)
-        # Filter for lines that contain '\tdevice', indicating a connected device
         devices = [line.split()[0] for line in result.stdout.splitlines() if '\tdevice' in line]
-        return devices
+        return len(devices) > 0
     except Exception as e:
         print(f"Error checking ADB devices: {e}")
-        return []
+        return False
 
 def run_script():
-    """Run the start_klipperscreen.sh script."""
     try:
         home_dir = os.environ.get("HOME", os.path.expanduser("~"))
         subprocess.run([f"{home_dir}/start_klipperscreen.sh"], check=True)
@@ -37,13 +36,17 @@ def run_script():
         print(f"Error running start_klipperscreen.sh: {e}")
 
 def main():
+    global last_state
+
     while True:
-        devices = check_adb_devices()
-        if devices:
-            print(f"ADB devices detected: {devices}")
+        connected = check_adb_devices()
+
+        # ONLY trigger on NEW connection
+        if connected and not last_state:
+            print("ADB device just connected → starting script")
             run_script()
-        else:
-            print("No ADB devices detected.")
+
+        last_state = connected
         time.sleep(5)
 
 if __name__ == "__main__":

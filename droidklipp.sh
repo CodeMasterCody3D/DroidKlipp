@@ -69,6 +69,11 @@ sleep 1
 # Launch XSDL
 adb shell am start -n x.org.server/.MainActivity
 
+# Kill klipperScreen and its Tmux session
+pkill -f KlipperScreen
+pkill -f screen.py
+tmux kill-session -t klipperscreen 2>/dev/null
+
 # Give XSDL time to start
 sleep 5
 

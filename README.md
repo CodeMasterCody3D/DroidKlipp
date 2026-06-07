@@ -27,14 +27,14 @@ https://github.com/CodeMasterCody3D/DroidKlipp-Android-APK
 
 ## KlipperScreen Requirement
 
-DroidKlipp expects KlipperScreen to be installed in the standard KIAUH v6 location:
+DroidKlipp expects KlipperScreen to be installed in these standard paths:
 
 ```text
 ~/KlipperScreen/screen.py
 ~/.KlipperScreen-env/bin/python
 ```
 
-When running KIAUH, choose the v6 KlipperScreen install when prompted. If KlipperScreen is installed somewhere else, DroidKlipp will not find it without script changes.
+Install KlipperScreen before installing DroidKlipp. If KlipperScreen is installed somewhere else, DroidKlipp will not find it without script changes.
 
 ## Klipper Host Prerequisites
 
@@ -57,18 +57,6 @@ sudo apt install adb tmux x11-utils
    -s
    0
    ```
-
-## Install KlipperScreen with KIAUH
-
-Recommended KIAUH fork with DroidKlipp menu support:
-
-```sh
-cd ~
-git clone https://github.com/CodeMasterCody3D/kiauhPlusDroidKlipp.git
-./kiauhPlusDroidKlipp/kiauh.sh
-```
-
-Install KlipperScreen through KIAUH before installing DroidKlipp.
 
 ## Install DroidKlipp
 
@@ -169,7 +157,7 @@ Remove DroidKlipp monitor/service files, WiFi fallback cache, udev rules, and Dr
 
 ### KlipperScreen does not appear
 
-Check that KIAUH installed KlipperScreen here:
+Check that KlipperScreen is installed here:
 
 ```sh
 ls ~/KlipperScreen/screen.py
@@ -202,7 +190,6 @@ Then refresh the cached IP if needed:
 - DroidKlipp Android APK: https://github.com/CodeMasterCody3D/DroidKlipp-Android-APK
 - KlipperScreen Android docs: https://klipperscreen.readthedocs.io/en/latest/Android/
 - KIAUH: https://github.com/dw-0/kiauh
-- DroidKlipp KIAUH fork: https://github.com/CodeMasterCody3D/kiauhPlusDroidKlipp
 - Android Klipper Screen reference: https://github.com/naruhaxor/AndroidKlipperScreen
 
 ## License

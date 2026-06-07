@@ -9,6 +9,13 @@ fi
 
 APK_URL="https://github.com/CodeMasterCody3D/DroidKlipp-Android-APK/releases/latest/download/DroidKlipp.apk"
 
+# Install DroidKlipp host prerequisites. x11-utils provides xdpyinfo.
+echo "Installing DroidKlipp prerequisites: adb tmux x11-utils"
+if ! sudo apt update || ! sudo apt install -y adb tmux x11-utils; then
+    echo "Failed to install DroidKlipp prerequisites. Aborting."
+    exit 1
+fi
+
 missing_commands=()
 for cmd in adb tmux xdpyinfo systemctl udevadm python3; do
     if ! command -v "$cmd" >/dev/null 2>&1; then

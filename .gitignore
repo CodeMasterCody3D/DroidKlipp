@@ -1,0 +1,8 @@
+# Local binary APK artifacts belong in the DroidKlipp-Android-APK release repo.
+*.apk
+
+# Common local/editor noise
+.DS_Store
+Thumbs.db
+*.swp
+*.swo

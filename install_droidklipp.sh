@@ -7,6 +7,37 @@ if [ "$USER_NAME" == "root" ]; then
     exit 1
 fi
 
+APK_URL="https://github.com/CodeMasterCody3D/DroidKlipp-Android-APK/releases/latest/download/DroidKlipp.apk"
+
+missing_commands=()
+for cmd in adb tmux xdpyinfo systemctl udevadm python3; do
+    if ! command -v "$cmd" >/dev/null 2>&1; then
+        missing_commands+=("$cmd")
+    fi
+done
+
+if [ "${#missing_commands[@]}" -gt 0 ]; then
+    echo "Missing required commands: ${missing_commands[*]}"
+    echo "Install prerequisites first:"
+    echo "  sudo apt update && sudo apt install adb tmux x11-utils"
+    exit 1
+fi
+
+if [ ! -x "/home/$USER_NAME/.KlipperScreen-env/bin/python" ] || [ ! -f "/home/$USER_NAME/KlipperScreen/screen.py" ]; then
+    echo "WARNING: KlipperScreen was not found in the expected KIAUH v6 paths:"
+    echo "  /home/$USER_NAME/.KlipperScreen-env/bin/python"
+    echo "  /home/$USER_NAME/KlipperScreen/screen.py"
+    echo "Install KlipperScreen with KIAUH v6 before using DroidKlipp."
+fi
+
+cat <<EOF
+-------------------------------------------------------
+DroidKlipp Android APK required:
+  $APK_URL
+Install it on Android before expecting the display to launch.
+-------------------------------------------------------
+EOF
+
 # Remove legacy separate WiFi service if present.
 for svc in droidklipp_wifi.service; do
     if systemctl list-unit-files "$svc" &>/dev/null; then
@@ -405,6 +436,7 @@ sudo systemctl restart adb_monitor.service
 
 echo "-------------------------------------------------------"
 echo "DroidKlipp installed."
+echo "  Android APK: $APK_URL"
 echo "  udev rule  : /etc/udev/rules.d/99-droidklipp.rules"
 echo "  udev script: /usr/local/bin/droidklipp_udev.sh"
 CACHED=$(cat "$IP_CACHE" 2>/dev/null || echo "(none)")

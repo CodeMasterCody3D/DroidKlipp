@@ -1,171 +1,214 @@
-## DROIDKLIPP USES THE INSTALL LOCATION OF KLIPPER SCREEN INSTALLED VIA KIAUH V6. WHEN RUNNING KIAUH IT WILL ASK TO USE VERSION V6 PRESS Y FOR YES. THEN PROCEED TO INSTALL KLIPPERCREEN WITH KIAUH, OTHERWISE YOU WILL NOT HAVE KLIPPERSCREEN WORKING ON YOUR ANDROID.
+# DroidKlipp
 
-NEW: DroidKlipp now supports automatic device wake and startup of XServer XSDL when an ADB device is detected.
-Note: Android screen lock must be disabled (set to None) for this feature to work correctly.
-
-🌐 DroidKlipp WiFi Add-on
-DroidKlipp now supports Automatic WiFi Fallback. If your USB cable is unplugged or the connection is lost, DroidKlipp will automatically detect the absence of a physical device and reroute the KlipperScreen display to your Android device over your local network using X11 redirection.
-Features
-Polling Watchdog: Checks for devices every 3 seconds.
-Seamless Handover: Automatically kills the WiFi session when a USB device is reconnected to save resources.
-Low Latency: Uses XServer XSDL redirection for a native-feeling experience.
-Installation
-Ensure XServer XSDL is running on your Android device.
-The main install_droidklipp.sh script now configures WiFi fallback. If no USB device is connected during install, enter your Android device's IP address when prompted.
-
+DroidKlipp turns an Android device into a KlipperScreen display for a Klipper printer host. It launches KlipperScreen on the Klipper machine and displays it on Android through the DroidKlipp Android APK / XServer XSDL integration.
 
 ![Logo](https://github.com/CodeMasterCody3D/DroidKlipp/blob/main/logo.png)
 
-# DroidKlipp: Seamlessly Connect Android to Klipper
+## What DroidKlipp Does
 
-**DroidKlipp** transforms your Android device into a powerful interface for KlipperScreen, allowing easy connection via **ADB** and **Xserver XSDL**. Switch between printers effortlessly with this portable and versatile solution!
+- Starts and monitors KlipperScreen automatically.
+- Uses ADB USB forwarding for low-latency USB display mode.
+- Starts the DroidKlipp Android X server activity automatically when a USB device is detected.
+- Falls back to WiFi X11 display mode when USB disconnects.
+- Uses udev events plus polling so USB plug/unplug changes are detected quickly.
+- Restarts KlipperScreen if the tmux session crashes.
 
----
+## Required Android APK
 
-## Overview
+Install the DroidKlipp Android APK on your Android device first:
 
-### What is DroidKlipp?
-DroidKlipp allows you to integrate your Android device with any Klipper setup, enabling seamless interaction with KlipperScreen. By leveraging ADB's TCP forwarding, you can bridge your device and enjoy a fully functional 3D printing interface on the go.
+[Download DroidKlipp.apk](https://github.com/CodeMasterCody3D/DroidKlipp-Android-APK/releases/latest/download/DroidKlipp.apk)
 
----
+APK source/release repo:
 
-## Features
-- **Automatic ADB TCP Forwarding:** Effortlessly bridge your Android device to Klipper.
-- **Seamless KlipperScreen Integration:** Display KlipperScreen on your Android device via Xserver XSDL.
-- **Portable & Flexible:** Perfect for makers seeking a mobile 3D printing interface.
+https://github.com/CodeMasterCody3D/DroidKlipp-Android-APK
 
----
+> DroidKlipp uses the Android package/activity `droidklipp.x.org.server/x.org.server.MainActivity`. Use the DroidKlipp APK above, not the old generic SourceForge XServer XSDL APK.
 
-## Getting Started
+## KlipperScreen Requirement
 
-### Prerequisites
+DroidKlipp expects KlipperScreen to be installed in the standard KIAUH v6 location:
 
-Ensure the following packages are installed on your Klipper machine:
-```sh
-sudo apt install adb
-sudo apt install tmux
+```text
+~/KlipperScreen/screen.py
+~/.KlipperScreen-env/bin/python
 ```
 
-### Android Setup
-1. **Install Required App**
-   Download and install [Xserver XSDL](https://sourceforge.net/projects/libsdl-android/files/apk/XServer-XSDL/XServer-XSDL-1.20.51.apk/download) on your Android device.
+When running KIAUH, choose the v6 KlipperScreen install when prompted. If KlipperScreen is installed somewhere else, DroidKlipp will not find it without script changes.
 
-2. **Enable USB Debugging**
-   - Go to your phone's Developer Options and enable **USB Debugging**.
+## Klipper Host Prerequisites
 
-3. **Launch Xserver XSDL**
-   - Open Xserver XSDL **before** plugging in your Android device to ensure the Xserver port is created correctly.
+Install these on the Klipper machine / Raspberry Pi:
 
----
-
-### Installing KlipperScreen with KIAUH
-To use DroidKlipp, you need to install KlipperScreen via KIAUH.
-UPDATE: I forked the KIAUH repo and added DroidKlipp to the install menu.
-[kiauhPlusDroidKlipp
-](https://github.com/CodeMasterCody3D/kiauhPlusDroidKlipp.git).
-
-Alternative install would be using my fork of KIAUH.
-
-1. Clone the KIAUH repository:
-   ```sh
-   cd ~ && git clone https://github.com/CodeMasterCody3D/kiauhPlusDroidKlipp.git
-   ```
-
-2. Run the KIAUH script:
-   ```sh
-   ./kiauhPlusDroidKlipp/kiauh.sh
-   ```
-
-3. Follow the prompts to install KlipperScreen.(Alternative Install: DroidKlipp install added to KIAUH for easy install)
-
-4. Please note that installing the network add-on during the KlipperScreen setup will prevent you from connecting to Wi-Fi afterward.
-
----
-
-### Installing DroidKlipp
-
-1. Clone the DroidKlipp repository:
-   ```sh
-   cd ~ && git clone https://github.com/CodeMasterCody3D/DroidKlipp.git
-   ```
-
-2. Navigate to the DroidKlipp folder:
-   ```sh
-   cd DroidKlipp
-   ```
-
-3. Install prerequisites:
-   ```sh
-   sudo apt install adb tmux x11-utils
-   ```
-
-4. Make the script executable:
-   ```sh
-   chmod +x install_droidklipp.sh
-   ```
-
-5. Run the DroidKlipp setup script. This also configures WiFi fallback:
-   ```sh
-   ./install_droidklipp.sh
-   ```
-
-6. Reboot your system:
-   ```sh
-   sudo reboot
-   ```
-
----
-
-### Updating WiFi Fallback Later
-
-WiFi fallback is now configured during the main DroidKlipp install:
 ```sh
+sudo apt update
+sudo apt install adb tmux x11-utils
+```
+
+## Android Setup
+
+1. Install `DroidKlipp.apk` from the release link above.
+2. Enable Developer Options and USB Debugging on Android.
+3. Disable the Android lock screen, or set it to `None`, so automatic wake/start works reliably.
+4. Open the DroidKlipp APK once before the first connection and accept any Android prompts.
+5. For X server screen blanking, open the Android app configuration and add these command-line parameters on separate lines:
+
+   ```text
+   -s
+   0
+   ```
+
+## Install KlipperScreen with KIAUH
+
+Recommended KIAUH fork with DroidKlipp menu support:
+
+```sh
+cd ~
+git clone https://github.com/CodeMasterCody3D/kiauhPlusDroidKlipp.git
+./kiauhPlusDroidKlipp/kiauh.sh
+```
+
+Install KlipperScreen through KIAUH before installing DroidKlipp.
+
+## Install DroidKlipp
+
+```sh
+cd ~
+git clone https://github.com/CodeMasterCody3D/DroidKlipp.git
+cd DroidKlipp
+chmod +x install_droidklipp.sh
 ./install_droidklipp.sh
+sudo reboot
 ```
 
-If your Android WiFi IP changes later, you can refresh only the WiFi cache:
+The main installer creates:
+
+```text
+/etc/udev/rules.d/99-droidklipp.rules
+/usr/local/bin/droidklipp_udev.sh
+~/droidklipp_monitor.py
+~/start_klipperscreen.sh
+/etc/systemd/system/adb_monitor.service
+~/.droidklipp_wifi_ip        # when a WiFi IP is detected or entered
+```
+
+It also enables and restarts:
+
+```text
+adb_monitor.service
+```
+
+## WiFi Fallback
+
+WiFi fallback is configured during `install_droidklipp.sh`.
+
+- If Android is connected over USB during install, the script tries to detect the Android `wlan0` IP automatically.
+- If no IP is detected, the script prompts for manual entry.
+- If the IP changes later, refresh only the WiFi cache with:
+
 ```sh
 ./install_wifi.sh
 ```
 
----
+## Runtime Behavior
 
-## Android Configuration
+USB connected:
 
-1. **Enable USB Debugging**
-   - Ensure your phone is set to allow debugging.
+```text
+ADB forward tcp:6100 -> Android tcp:6000
+KlipperScreen DISPLAY=:100
+```
 
+USB disconnected and WiFi IP cached:
 
-2. **Plug & Play**
-   - Plug in your phone and allow any permission prompts that appear.
+```text
+KlipperScreen DISPLAY=<android-ip>:0
+```
 
----
+Useful status/log commands:
 
-## Important Notes
+```sh
+systemctl status adb_monitor.service
+journalctl -u adb_monitor.service -f
+```
 
-### Xserver XSDL Configuration
-- Stop Screen Blanking in Xserver-XSDL
-Even after enabling the "Stay Awake" option in the Developer/USB Debugging options of your Android device, the Xserver-XSDL may still go to a black screen but keep the backlight of your device on. To keep the screen always active, upon start up of Xserver-XSDL app, select the Change Device Configuration at the top of the splash screen and then select the Command line parameters, one argument per line option. Append the following argument (must be on seperate lines):
+## Manual Helper
 
+After install, this helper exists for manual ADB wake/forward setup:
+
+```sh
+~/start_klipperscreen.sh
+```
+
+The monitor service still handles KlipperScreen launch/restart automatically.
+
+## Uninstall
+
+Remove DroidKlipp monitor/service files while keeping KlipperScreen intact:
+
+```sh
+./uninstall_droidklipp.sh
+```
+
+Remove only cached WiFi fallback setup:
+
+```sh
+./uninstall_wifi.sh
+```
+
+## Troubleshooting
+
+### Android does not wake or launch the X server
+
+- Confirm USB Debugging is enabled.
+- Accept the Android USB debugging trust prompt.
+- Disable the lock screen.
+- Confirm the DroidKlipp APK is installed.
+- Check ADB:
 
   ```sh
-  -s
-  0
+  adb devices
+  adb shell am start -n droidklipp.x.org.server/x.org.server.MainActivity
   ```
 
-### Xserver XSDL Download
-Xserver XSDL is no longer available on the Google Play Store. Download it directly from SourceForge:
-[Download Xserver XSDL](https://sourceforge.net/projects/libsdl-android/files/apk/XServer-XSDL/XServer-XSDL-1.20.51.apk/download)
+### KlipperScreen does not appear
 
----
+Check that KIAUH installed KlipperScreen here:
 
-## Links and Resources
+```sh
+ls ~/KlipperScreen/screen.py
+ls ~/.KlipperScreen-env/bin/python
+```
 
-- [KlipperScreen Docs](https://klipperscreen.readthedocs.io/en/latest/Android/)
-- [KIAUH](https://github.com/dw-0/kiauh)
-- [Xserver XSDL APK](https://sourceforge.net/projects/libsdl-android/files/apk/XServer-XSDL/XServer-XSDL-1.20.51.apk/download)
-- [Android Klipper Screen](https://github.com/naruhaxor/AndroidKlipperScreen)
+Check monitor logs:
 
----
+```sh
+journalctl -u adb_monitor.service -n 100 --no-pager
+```
 
-Now you’re ready to load your DroidKlipps and start printing! 🚀
+### WiFi fallback does not work
+
+Confirm Android and the Klipper host are on the same network and X11 is reachable:
+
+```sh
+cat ~/.droidklipp_wifi_ip
+xdpyinfo -display $(cat ~/.droidklipp_wifi_ip):0
+```
+
+Then refresh the cached IP if needed:
+
+```sh
+./install_wifi.sh
+```
+
+## Links
+
+- DroidKlipp Android APK: https://github.com/CodeMasterCody3D/DroidKlipp-Android-APK
+- KlipperScreen Android docs: https://klipperscreen.readthedocs.io/en/latest/Android/
+- KIAUH: https://github.com/dw-0/kiauh
+- DroidKlipp KIAUH fork: https://github.com/CodeMasterCody3D/kiauhPlusDroidKlipp
+- Android Klipper Screen reference: https://github.com/naruhaxor/AndroidKlipperScreen
+
+## License
+
+See [`LICENSE`](LICENSE).

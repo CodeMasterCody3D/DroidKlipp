@@ -144,17 +144,13 @@ The monitor service still handles KlipperScreen launch/restart automatically.
 
 ## Uninstall
 
-Remove DroidKlipp monitor/service files while keeping KlipperScreen intact:
+Remove DroidKlipp monitor/service files, WiFi fallback cache, udev rules, and DroidKlipp tmux sessions while keeping KlipperScreen itself intact:
 
 ```sh
 ./uninstall_droidklipp.sh
 ```
 
-Remove only cached WiFi fallback setup:
-
-```sh
-./uninstall_wifi.sh
-```
+`uninstall_wifi.sh` is kept only as a backward-compatible wrapper and now runs the full uninstaller.
 
 ## Troubleshooting
 

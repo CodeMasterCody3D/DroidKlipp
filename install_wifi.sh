@@ -32,7 +32,7 @@ if systemctl is-active --quiet adb_monitor.service; then
     sudo systemctl restart adb_monitor.service
     echo "Monitor restarted with new IP."
 else
-    echo "Note: adb_monitor.service is not running. Run droidklipp.sh first."
+    echo "Note: adb_monitor.service is not running. Run install_droidklipp.sh first."
 fi
 
 CACHED=$(cat "$IP_CACHE" 2>/dev/null || echo "(none)")

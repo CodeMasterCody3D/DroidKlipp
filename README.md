@@ -11,8 +11,7 @@ Seamless Handover: Automatically kills the WiFi session when a USB device is rec
 Low Latency: Uses XServer XSDL redirection for a native-feeling experience.
 Installation
 Ensure XServer XSDL is running on your Android device.
-Run the install_wifi.sh script.
-Enter your Android device's IP address when prompted
+The main install_droidklipp.sh script now configures WiFi fallback. If no USB device is connected during install, enter your Android device's IP address when prompted.
 
 
 ![Logo](https://github.com/CodeMasterCody3D/DroidKlipp/blob/main/logo.png)
@@ -25,15 +24,15 @@ Enter your Android device's IP address when prompted
 
 ## Overview
 
-### What is DroidKlipp?  
+### What is DroidKlipp?
 DroidKlipp allows you to integrate your Android device with any Klipper setup, enabling seamless interaction with KlipperScreen. By leveraging ADB's TCP forwarding, you can bridge your device and enjoy a fully functional 3D printing interface on the go.
 
 ---
 
 ## Features
-- **Automatic ADB TCP Forwarding:** Effortlessly bridge your Android device to Klipper.  
-- **Seamless KlipperScreen Integration:** Display KlipperScreen on your Android device via Xserver XSDL.  
-- **Portable & Flexible:** Perfect for makers seeking a mobile 3D printing interface.  
+- **Automatic ADB TCP Forwarding:** Effortlessly bridge your Android device to Klipper.
+- **Seamless KlipperScreen Integration:** Display KlipperScreen on your Android device via Xserver XSDL.
+- **Portable & Flexible:** Perfect for makers seeking a mobile 3D printing interface.
 
 ---
 
@@ -41,41 +40,41 @@ DroidKlipp allows you to integrate your Android device with any Klipper setup, e
 
 ### Prerequisites
 
-Ensure the following packages are installed on your Klipper machine:  
+Ensure the following packages are installed on your Klipper machine:
 ```sh
 sudo apt install adb
 sudo apt install tmux
-```  
+```
 
 ### Android Setup
-1. **Install Required App**  
-   Download and install [Xserver XSDL](https://sourceforge.net/projects/libsdl-android/files/apk/XServer-XSDL/XServer-XSDL-1.20.51.apk/download) on your Android device.  
+1. **Install Required App**
+   Download and install [Xserver XSDL](https://sourceforge.net/projects/libsdl-android/files/apk/XServer-XSDL/XServer-XSDL-1.20.51.apk/download) on your Android device.
 
-2. **Enable USB Debugging**  
-   - Go to your phone's Developer Options and enable **USB Debugging**. 
+2. **Enable USB Debugging**
+   - Go to your phone's Developer Options and enable **USB Debugging**.
 
-3. **Launch Xserver XSDL**  
+3. **Launch Xserver XSDL**
    - Open Xserver XSDL **before** plugging in your Android device to ensure the Xserver port is created correctly.
 
 ---
 
 ### Installing KlipperScreen with KIAUH
-To use DroidKlipp, you need to install KlipperScreen via KIAUH. 
+To use DroidKlipp, you need to install KlipperScreen via KIAUH.
 UPDATE: I forked the KIAUH repo and added DroidKlipp to the install menu.
 [kiauhPlusDroidKlipp
-](https://github.com/CodeMasterCody3D/kiauhPlusDroidKlipp.git).  
+](https://github.com/CodeMasterCody3D/kiauhPlusDroidKlipp.git).
 
 Alternative install would be using my fork of KIAUH.
 
-1. Clone the KIAUH repository:  
+1. Clone the KIAUH repository:
    ```sh
    cd ~ && git clone https://github.com/CodeMasterCody3D/kiauhPlusDroidKlipp.git
-   ```  
+   ```
 
-2. Run the KIAUH script:  
+2. Run the KIAUH script:
    ```sh
    ./kiauhPlusDroidKlipp/kiauh.sh
-   ```  
+   ```
 
 3. Follow the prompts to install KlipperScreen.(Alternative Install: DroidKlipp install added to KIAUH for easy install)
 
@@ -85,69 +84,60 @@ Alternative install would be using my fork of KIAUH.
 
 ### Installing DroidKlipp
 
-1. Clone the DroidKlipp repository:  
+1. Clone the DroidKlipp repository:
    ```sh
    cd ~ && git clone https://github.com/CodeMasterCody3D/DroidKlipp.git
-   ```  
+   ```
 
-2. Navigate to the DroidKlipp folder:  
+2. Navigate to the DroidKlipp folder:
    ```sh
    cd DroidKlipp
-   ```  
-
-3. Make the script executable:  
-   ```sh
-   sudo chmod +x droidklipp.sh
-   ```  
-
-4. Run the DroidKlipp setup script:  
-   ```sh
-   ./droidklipp.sh
    ```
-    
-5. Install Prerequisites:  
-  ```sh
-  sudo apt install adb
-  sudo apt install tmux
-  ``` 
 
-6. Reboot your system:  
+3. Install prerequisites:
+   ```sh
+   sudo apt install adb tmux x11-utils
+   ```
+
+4. Make the script executable:
+   ```sh
+   chmod +x install_droidklipp.sh
+   ```
+
+5. Run the DroidKlipp setup script. This also configures WiFi fallback:
+   ```sh
+   ./install_droidklipp.sh
+   ```
+
+6. Reboot your system:
    ```sh
    sudo reboot
-   ```  
+   ```
 
 ---
 
-### Installing WiFi Addon. 
+### Updating WiFi Fallback Later
 
-1. Navigate to the DroidKlipp folder:  
-   ```sh
-   cd ~
-   ```
-   ```sh
-   cd DroidKlipp
-   ```  
+WiFi fallback is now configured during the main DroidKlipp install:
+```sh
+./install_droidklipp.sh
+```
 
-2. Make the script executable:  
-   ```sh
-   sudo chmod +x install_wifi.sh
-   ```  
-
-3. Run the DroidKlipp wifi setup script:  
-   ```sh
-   ./install_wifi.sh
-   ```
+If your Android WiFi IP changes later, you can refresh only the WiFi cache:
+```sh
+./install_wifi.sh
+```
 
 ---
 
 ## Android Configuration
 
-1. **Enable USB Debugging**  
-   - Ensure your phone is set to allow debugging.  
+1. **Enable USB Debugging**
+   - Ensure your phone is set to allow debugging.
 
 
-2. **Plug & Play**  
-   - Plug in your phone and allow any permission prompts that appear.  
+2. **Plug & Play**
+   - Plug in your phone and allow any permission prompts that appear.
 
 ---
 
@@ -161,20 +151,20 @@ Even after enabling the "Stay Awake" option in the Developer/USB Debugging optio
   ```sh
   -s
   0
-  ```  
+  ```
 
 ### Xserver XSDL Download
-Xserver XSDL is no longer available on the Google Play Store. Download it directly from SourceForge:  
+Xserver XSDL is no longer available on the Google Play Store. Download it directly from SourceForge:
 [Download Xserver XSDL](https://sourceforge.net/projects/libsdl-android/files/apk/XServer-XSDL/XServer-XSDL-1.20.51.apk/download)
 
 ---
 
 ## Links and Resources
 
-- [KlipperScreen Docs](https://klipperscreen.readthedocs.io/en/latest/Android/)  
-- [KIAUH](https://github.com/dw-0/kiauh)  
+- [KlipperScreen Docs](https://klipperscreen.readthedocs.io/en/latest/Android/)
+- [KIAUH](https://github.com/dw-0/kiauh)
 - [Xserver XSDL APK](https://sourceforge.net/projects/libsdl-android/files/apk/XServer-XSDL/XServer-XSDL-1.20.51.apk/download)
-- [Android Klipper Screen](https://github.com/naruhaxor/AndroidKlipperScreen)  
+- [Android Klipper Screen](https://github.com/naruhaxor/AndroidKlipperScreen)
 
 ---
 

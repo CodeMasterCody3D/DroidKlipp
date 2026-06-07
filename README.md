@@ -36,9 +36,23 @@ DroidKlipp expects KlipperScreen to be installed in these standard paths:
 
 Install KlipperScreen before installing DroidKlipp. If KlipperScreen is installed somewhere else, DroidKlipp will not find it without script changes.
 
+## Install with KIAUH
+
+The easiest way to install DroidKlipp is through the Extensions section in this KIAUH fork:
+
+https://github.com/CodeMasterCody3D/kiauhPlusDroidKlipp/tree/master
+
+```sh
+cd ~
+git clone https://github.com/CodeMasterCody3D/kiauhPlusDroidKlipp.git
+./kiauhPlusDroidKlipp/kiauh.sh
+```
+
+In KIAUH, open the **Extensions** section and choose **DroidKlipp**. The extension installs DroidKlipp and runs the DroidKlipp installer for you.
+
 ## Klipper Host Prerequisites
 
-Install these on the Klipper machine / Raspberry Pi:
+The installer attempts to install these automatically on the Klipper machine / Raspberry Pi:
 
 ```sh
 sudo apt update
@@ -58,7 +72,9 @@ sudo apt install adb tmux x11-utils
    0
    ```
 
-## Install DroidKlipp
+## Manual Install DroidKlipp
+
+Use this method if you are not installing through KIAUH:
 
 ```sh
 cd ~

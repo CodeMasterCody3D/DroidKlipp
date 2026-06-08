@@ -65,12 +65,6 @@ sudo apt install adb tmux x11-utils
 2. Enable Developer Options and USB Debugging on Android.
 3. Disable the Android lock screen, or set it to `None`, so automatic wake/start works reliably.
 4. Open the DroidKlipp APK once before the first connection and accept any Android prompts.
-5. For X server screen blanking, open the Android app configuration and add these command-line parameters on separate lines:
-
-   ```text
-   -s
-   0
-   ```
 
 ## Manual Install DroidKlipp
 
